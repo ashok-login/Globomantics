@@ -1,11 +1,21 @@
 ﻿version: '3.7'
 #This node contains the services with all of the different containers we're orchestrating here.'
 services:
+  reverseproxy:
+    build:
+      context: .
+      dockerfile: nginx/nginx.Dockerfile
+    depends_on:
+      - globomantics.identityserver
+    ports:
+      - "5200:5100"
+
   # This service has been named with the lowercase version of the project name. We could change this name if we wanted to
   globomantics.identityserver:
     # This is the image in use
     image: ${DOCKER_REGISTRY-}globomanticsidentityserver
-    # The real meat comes in the build area which defines the context or working directory for the container, and then, the path to the Dockerfile that defines it.
+    # The real meat comes in the build area which defines the context or working directory for the container,
+    # and then, the path to the Dockerfile that defines it.
     build:
       context: .
       # This is the path to the Dockerfile that defines it
