@@ -8,3 +8,11 @@
 *.user
 */.vs
 /packages
+/bin/Debug/Globomantics.IdentityServer.dll
+/bin/Debug/Globomantics.IdentityServer.pdb
+/bin/Debug/Globomantics.IdentityServer.Views.dll
+/bin/Debug/Globomantics.IdentityServer.Views.pdb
+/obj/Debug/docker-compose.dcproj.AssemblyReference.cache
+/obj/Docker/CachedComposeConfigFilePaths.cache
+/obj/Docker/MergedDockerCompose2.cache
+/obj/Docker/globomantics.identityserver
