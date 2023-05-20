@@ -6,6 +6,7 @@ FROM nginx
 # to the /etc/nginx/nginx.conf location on the container that will be created. When Nginx starts, it looks at this file
 # to control how it behaves. All the configuration settings defined in the nginx/nginx.local.conf gets copied into the
 # Nginx container when it gets built by the copy command.
+# nginx.local.conf file should contain information that tells Nginx how to get traffic to our IdentityServer application.
 COPY nginx/nginx.local.conf /etc/nginx/nginx.conf
 
 # Uncomment the below code at the right time

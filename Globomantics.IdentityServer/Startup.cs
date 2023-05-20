@@ -125,6 +125,9 @@ namespace Globomantics.IdentityServer
             //app.ApplyDatabaseSchema();
             //app.PopulateDatabaseIfEmpty();
 
+            /* It news up ForwardedHeadersOptions object and specifies which headers we should be looking for.
+             * Then it clears out any "KnownNetworks", and "KnownProxies" and tells our app to use the middleware
+             * that should use and honor these forwarded HTTP headers. */
             var forwardedHeaderOptions = new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

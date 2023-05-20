@@ -16,3 +16,5 @@
 /obj/Docker/CachedComposeConfigFilePaths.cache
 /obj/Docker/MergedDockerCompose2.cache
 /obj/Docker/globomantics.identityserver
+/obj/Docker/HashOfDockerArtifacts.cache
+/obj/Docker
