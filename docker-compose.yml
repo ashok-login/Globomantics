@@ -16,7 +16,8 @@ services:
     ports:
       # Taken host port 5200 just to be different. And then the container port should be 5100 as it matches the port
       # that Nginx is listening on from the nginx.local.conf file
-      - "5200:5100"
+      # - "5200:5100"
+        - "44395:443"
 
   # This service has been named with the lowercase version of the project name. We could change this name if we wanted to
   globomantics.identityserver:

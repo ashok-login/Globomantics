@@ -78,8 +78,8 @@ services:
       default: null
     ports:
     - mode: ingress
-      target: 5100
-      published: "5200"
+      target: 443
+      published: "44395"
       protocol: tcp
 networks:
   default:
