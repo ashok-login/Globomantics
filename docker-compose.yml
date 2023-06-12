@@ -1,7 +1,9 @@
 ﻿version: '3.7'
 #This node contains the services with all of the different containers we're orchestrating here.'
 services:
-  # Below service (name: reverseproxy) is to add the Nginx service.
+  # Below service (name: reverseproxy) is to add the Nginx service. BTW, the service name should be unique.
+  # Each service is a container that will run in the compose project, and as such, they'll each have a Dockerfile or image
+  # that specifies the container for the service.
   reverseproxy:
     # This "build" node defines how our container should be built.
     build:
@@ -11,9 +13,14 @@ services:
       # to the IdentityServer. So, I want the IdentityServer to be started first so that this reverseproxy can
       # see it when it starts. To do that, we can add a node called "depends_on" like below
       dockerfile: nginx/nginx.Dockerfile
+    # We can control the startup order of services with the "depends_on" keyword. For the below case,
+    # the "reverseproxy" depends_on "globomantics.identityserver", which means that the "globomantics.identityserver"
+    # service is going to be started first.
     depends_on:
       - globomantics.identityserver
     ports:
+      # We specify any ports that should be exposed on the host, with the familiar syntax of host port first, followed by
+      # the corresponding port on the container.
       # Taken host port 5200 just to be different. And then the container port should be 5100 as it matches the port
       # that Nginx is listening on from the nginx.local.conf file
       # - "5200:5100"
@@ -29,6 +36,7 @@ services:
       context: .
       # This is the path to the Dockerfile that defines it
       dockerfile: Globomantics.IdentityServer/Dockerfile
+    # You can specify environment variables in the compose file as well like shown below
     environment:
       # This is to make sure that our Application listens on port 5000 to serve requests.
       - ASPNETCORE_URLS=http://*:5000

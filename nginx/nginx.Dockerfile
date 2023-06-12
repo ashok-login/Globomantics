@@ -9,6 +9,5 @@ FROM nginx
 # nginx.local.conf file should contain information that tells Nginx how to get traffic to our IdentityServer application.
 COPY nginx/nginx.local.conf /etc/nginx/nginx.conf
 
-# Uncomment the below code at the right time
 COPY nginx/id-local.crt /etc/ssl/certs/id-local.globomantics.com.crt
 COPY nginx/id-local.key /etc/ssl/private/id-local.globomantics.com.key
