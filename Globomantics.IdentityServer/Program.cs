@@ -32,7 +32,8 @@ namespace Globomantics.IdentityServer
                         .Enrich.FromLogContext()
                         .WriteTo.Console()
                         //.WriteTo.Seq("http://localhost:5341")
-                        .WriteTo.Seq("http://host.docker.internal:5341");
+                        //.WriteTo.Seq("http://host.docker.internal:5341");
+                        .WriteTo.Seq("http://globoseq"); //"globoseq" is the service name from docker-compose.yml file
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

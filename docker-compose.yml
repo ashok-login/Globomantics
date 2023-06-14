@@ -44,3 +44,17 @@ services:
       # I want the host port to be 5000, and that can map to the container port of 5000 which should be listening
       # for the requests based on the environment variable we set.
       - "5000:5000"
+
+  globoseq: # It's the seq service for our Globomantics application
+    image: datalust/seq # Instead of a Dockerfile, provide the image name that will be used for this container
+    restart: unless-stopped # This option is to make sure that if something happens to this service, it should be restarted automaically
+    ports: # This is how to set port mapping in docker-compose.yml file
+      - "5342:80"
+    environment: # This is how to set environment variables in docker-compose.yml file
+      - ACCEPT_EULA=Y
+
+  globosmtp:
+    image: rnwood/smtp4dev
+    restart: always
+    ports:
+      - "5010:80"

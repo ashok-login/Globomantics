@@ -67,6 +67,28 @@ services:
       read_only: true
       bind:
         create_host_path: true
+  globoseq:
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5342"
+      protocol: tcp
+    restart: unless-stopped
+  globosmtp:
+    image: rnwood/smtp
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5010"
+      protocol: tcp
+    restart: always
   reverseproxy:
     build:
       context: F:\Ashok\VS2019\Pluralsight\Globomantics

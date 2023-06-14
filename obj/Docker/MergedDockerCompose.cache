@@ -14,6 +14,28 @@ services:
       target: 5000
       published: "5000"
       protocol: tcp
+  globoseq:
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5342"
+      protocol: tcp
+    restart: unless-stopped
+  globosmtp:
+    image: rnwood/smtp
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5010"
+      protocol: tcp
+    restart: always
   reverseproxy:
     build:
       context: F:\Ashok\VS2019\Pluralsight\Globomantics
